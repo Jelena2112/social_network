@@ -11,7 +11,7 @@ function connection()
 
     }
 
-    function createUser(string $name, string $phone, string  $city, string $country, string $about_me, int $age) : void
+    function createUser(string $name, string $phone, string  $city, string $country, string $about_me, int $age, string $email, string $password) : void
     {
         $connect = connection();
 
@@ -21,11 +21,13 @@ function connection()
         $country = $connect->real_escape_string($country);
         $about_me = $connect->real_escape_string($about_me);
         $age = $connect->real_escape_string($age);
+        $email = $connect->real_escape_string($email);
+        $password = $connect->real_escape_string($password);
 
         $query = $connect->query("INSERT INTO users 
-                                (name, phone, city, country, about_me, age) 
+                                (name, phone, city, country, about_me, age, email, password) 
                                 VALUES
-                                ('$name', '$phone', '$city', '$country', '$about_me', $age)
+                                ('$name', '$phone', '$city', '$country', '$about_me', $age, '$email', '$password')
                         ");
 //
 //        var_dump( mysqli_error($connect));
