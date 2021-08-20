@@ -29,6 +29,7 @@ function connection()
                         ");
 //
 //        var_dump( mysqli_error($connect));
+//
 
         $connect->close();
 
