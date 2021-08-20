@@ -22,6 +22,11 @@ function connection()
         $about_me = $connect->real_escape_string($about_me);
         $age = $connect->real_escape_string($age);
         $email = $connect->real_escape_string($email);
+
+        $password = str_split($password);
+
+        $password =  password_hash("rasmuslerdorf", PASSWORD_DEFAULT, $password);
+
         $password = $connect->real_escape_string($password);
 
         $query = $connect->query("INSERT INTO users 
