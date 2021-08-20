@@ -22,10 +22,7 @@ function connection()
         $about_me = $connect->real_escape_string($about_me);
         $age = $connect->real_escape_string($age);
         $email = $connect->real_escape_string($email);
-
-        $password = str_split($password);
-
-        $password =  password_hash("rasmuslerdorf", PASSWORD_DEFAULT, $password);
+        $password =  password_hash($password, PASSWORD_DEFAULT);
 
         $password = $connect->real_escape_string($password);
 
@@ -40,4 +37,14 @@ function connection()
 
         $connect->close();
 
+    }
+
+    function getUser (string $email) : array
+    {
+        $connect = connection();
+        $query = $connect->query("SELECT * FROM users WHERE  email = '$email' LIMIT 1");
+
+        $connect->close();
+
+        return $query->fetch_assoc();
     }

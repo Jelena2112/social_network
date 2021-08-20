@@ -2,7 +2,7 @@
 
 if(!isset($_POST['name']) || !isset($_POST['phone']) || !isset($_POST['city']) || !isset($_POST['country']) || !isset($_POST['about_me']) || !isset($_POST['age']) || !isset($_POST['email']) || !isset($_POST['password']) )
     {
-        die("All input fields are required in log in");
+        die("All input fields are required in sign in");
     }
 
 require "functions.php";
