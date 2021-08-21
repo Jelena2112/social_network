@@ -30,4 +30,7 @@ if (userExists($email))
 
 createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);
 
+session_start();
+$_SESSION["logged in"] = true;
+
 header( "Location: ../index.php");
