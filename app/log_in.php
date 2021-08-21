@@ -11,9 +11,9 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (fieldsLogInEmpty( $email, $password))
-    {
-        die("Fields must not be empty");
-    }
+{
+    die("Fields must not be empty");
+}
 
 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 {
@@ -24,16 +24,17 @@ if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 require "base.php";
 
 if( !userExists($email) )
-    {
-        die("Email doesnt exist in database");
-    }
+{
+    die("Email doesnt exist in database");
+}
 
 $user = getUser($email);
 
 if( !password_verify($password, $user['password']) )
-    {
-        die("Your password is incorrect");
-    }
+{
+    die("Your password is incorrect");
+}
+
  session_start();
 $_SESSION["logged_in"] = true;
 $_SESSION["user_id"] = $user['id'];
