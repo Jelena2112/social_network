@@ -15,6 +15,12 @@ if (fieldsLogInEmpty( $email, $password))
         die("Fields must not be empty");
     }
 
+if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+{
+    die("Email must be format @mail.something");
+}
+
+
 require "base.php";
 
 if( !userExists($email) )

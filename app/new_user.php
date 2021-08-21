@@ -17,16 +17,22 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (fieldsEmpty($name, $phone, $city, $country, $about_me, (int) $age, $email, $password))
-    {
-        die("Fields must not be empty");
-    }
+{
+    die("Fields must not be empty");
+}
+
+if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+{
+    die("Email must be format @mail.something");
+}
 
 require "base.php";
 
+
 if (userExists($email))
-    {
-        die("Email exists in database");
-    }
+{
+    die("Email exists in database");
+}
 
 $result = createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);
 
