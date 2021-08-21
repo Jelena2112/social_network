@@ -23,6 +23,11 @@ if (fieldsEmpty($name, $phone, $city, $country, $about_me, (int) $age, $email, $
 
 require "base.php";
 
+if (userExists($email))
+    {
+        die("Email exists in database");
+    }
+
 createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);
 
 header( "Location: ../index.php");

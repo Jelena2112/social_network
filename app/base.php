@@ -11,6 +11,23 @@ function connection()
 
     }
 
+    function userExists ( string $email) : bool
+    {
+        $connect = connection();
+
+        $email = $connect->real_escape_string($email);
+
+        $query = $connect->query("SELECT * FROM users WHERE email = '$email' LIMIT 1");
+
+        $connect->close();
+
+        if( $query->num_rows >= 1 )
+        {
+            return true;
+        }
+        return false;
+    }
+
     function createUser(string $name, string $phone, string  $city, string $country, string $about_me, int $age, string $email, string $password) : void
     {
         $connect = connection();

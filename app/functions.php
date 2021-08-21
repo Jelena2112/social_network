@@ -10,10 +10,12 @@ function fieldsEmpty (string $name, string $phone, string $city, string $country
     }
 
 function fieldsLogInEmpty ( string $email, string $password) : bool
-{
-    if( $email == "" || $password == "")
     {
-        return true;
+        if( $email == "" || $password == "")
+        {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
+
+

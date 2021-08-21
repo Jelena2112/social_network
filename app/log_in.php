@@ -11,11 +11,16 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 if (fieldsLogInEmpty( $email, $password))
-{
-    die("Fields must not be empty");
-}
+    {
+        die("Fields must not be empty");
+    }
 
 require "base.php";
+
+if( !userExists($email) )
+    {
+        die("Email doesnt exist in database");
+    }
 
 $user = getUser($email);
 
