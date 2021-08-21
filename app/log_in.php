@@ -29,7 +29,8 @@ if( !password_verify($password, $user['password']) )
         die("Your password is incorrect");
     }
  session_start();
-$_SESSION["logged in"] = true;
+$_SESSION["logged_in"] = true;
+$_SESSION["user_id"] = $user['id'];
 
 //var_dump($_SESSION);
 

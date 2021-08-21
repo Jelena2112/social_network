@@ -28,7 +28,7 @@ function connection()
         return false;
     }
 
-    function createUser(string $name, string $phone, string  $city, string $country, string $about_me, int $age, string $email, string $password) : void
+    function createUser(string $name, string $phone, string  $city, string $country, string $about_me, int $age, string $email, string $password) : int
     {
         $connect = connection();
 
@@ -48,11 +48,8 @@ function connection()
                                 VALUES
                                 ('$name', '$phone', '$city', '$country', '$about_me', $age, '$email', '$password')
                         ");
-//
-//        var_dump( mysqli_error($connect));
-//
 
-        $connect->close();
+        return $connect->insert_id;
 
     }
 

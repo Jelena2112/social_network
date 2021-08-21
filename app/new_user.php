@@ -28,9 +28,12 @@ if (userExists($email))
         die("Email exists in database");
     }
 
-createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);
+$result = createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);
 
 session_start();
-$_SESSION["logged in"] = true;
+$_SESSION["logged_in"] = true;
+$_SESSION["user_id"] = $result;
+
+//var_dump($_SESSION["user_id"]);
 
 header( "Location: ../index.php");
