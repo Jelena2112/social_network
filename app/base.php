@@ -62,3 +62,16 @@ function connection()
 
         return $query->fetch_assoc();
     }
+
+    function createPost(string $postName, string $postText, int $userId) : void
+    {
+        $connect = connection();
+
+        $postName = $connect->real_escape_string($postName);
+        $postText = $connect->real_escape_string($postText);
+        $userId = $connect->real_escape_string($userId);
+
+        $connect->query("INSERT INTO posts (post_name, post_text, user_id) VALUES ('$postName', '$postText', $userId)");
+
+        $connect->close();
+    }

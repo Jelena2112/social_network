@@ -18,4 +18,13 @@ function fieldsLogInEmpty ( string $email, string $password) : bool
         return false;
     }
 
+    function fieldsPostEmpty(string $postName, string $postText) : bool
+    {
+        if( $postName == "" || $postText == "" )
+        {
+            return true;
+        }
+        return false;
+    }
+
 
