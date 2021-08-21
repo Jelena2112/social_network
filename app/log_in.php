@@ -2,7 +2,8 @@
 
 if( !isset($_POST['email']) || !isset($_POST['password']) )
 {
-    die("All input fields are required in log in");
+    header("Location: ../log_in.php?error=All input fields are required in log in");
+    die();
 }
 
 require "functions.php";
@@ -12,12 +13,14 @@ $password = $_POST['password'];
 
 if (fieldsLogInEmpty( $email, $password))
 {
-    die("Fields must not be empty");
+    header("Location: ../log_in.php?error=Fields must not be empty");
+    die();
 }
 
 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 {
-    die("Email must be format @mail.something");
+    header("Location: ../log_in.php?error=Email must be format @mail.something");
+    die();
 }
 
 
@@ -25,14 +28,16 @@ require "base.php";
 
 if( !userExists($email) )
 {
-    die("Email doesnt exist in database");
+    header("Location: ../log_in?error=Email doesnt exist in database");
+    die();
 }
 
 $user = getUser($email);
 
 if( !password_verify($password, $user['password']) )
 {
-    die("Your password is incorrect");
+    header("Location: ../log_in?error=Your password is incorrect");
+    die();
 }
 
  session_start();

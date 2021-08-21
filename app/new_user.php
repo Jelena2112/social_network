@@ -2,7 +2,7 @@
 
 if(!isset($_POST['name']) || !isset($_POST['phone']) || !isset($_POST['city']) || !isset($_POST['country']) || !isset($_POST['about_me']) || !isset($_POST['age']) || !isset($_POST['email']) || !isset($_POST['password']) )
     {
-        die("All input fields are required in sign in");
+        header( "Location: ../sign_in.php?error=All input fields are required in sign in");
     }
 
 require "functions.php";
@@ -18,20 +18,22 @@ $password = $_POST['password'];
 
 if (fieldsEmpty($name, $phone, $city, $country, $about_me, (int) $age, $email, $password))
 {
-    die("Fields must not be empty");
+    header( "Location: ../sign_in.php?error=Fields must not be empty");
+    die();
 }
 
 if(!filter_var($email, FILTER_VALIDATE_EMAIL))
 {
-    die("Email must be format @mail.something");
+    header( "Location: ../sign_in.php?error=Email must be format @mail.something");
+    die();
 }
 
 require "base.php";
 
-
 if (userExists($email))
 {
-    die("Email exists in database");
+    header( "Location: ../sign_in.php?error=Email exists in database");
+    die();
 }
 
 $result = createUser($name, $phone, $city, $country, $about_me, $age, $email, $password);

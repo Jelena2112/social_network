@@ -5,6 +5,9 @@
     </head>
     <body>
 
+        <?php if(isset($_GET["error"])): ?>
+            <p><?= $_GET["error"] ?></p>
+        <?php endif; ?>
 
         <form action="app/new_user.php" method="post">
             <input required  name="name" placeholder="Your name" type="text">
@@ -17,11 +20,6 @@
             <textarea required name="about_me" placeholder="Write something about you" type="text"></textarea>
             <button>Submit</button>
         </form>
-
-
-
-
-
 
     </body>
 </html>
