@@ -44,4 +44,4 @@ $_SESSION["user_id"] = $result;
 
 //var_dump($_SESSION["user_id"]);
 
-header( "Location: ../index.php");
+header( "Location: ../feed.php");

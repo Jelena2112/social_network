@@ -75,3 +75,16 @@ function connection()
 
         $connect->close();
     }
+
+    function getAllPosts () :array
+    {
+        $connect = connection();
+        $result = $connect->query("SELECT posts.*, users.name FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC");
+
+//        $user = $result["user_id"];
+//
+//        $users = $connect->query("SELECT * FROM users WHERE id =  $user");
+
+        $connect->close();
+        return  $result->fetch_all(MYSQLI_ASSOC);
+    }

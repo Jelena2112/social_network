@@ -49,5 +49,5 @@ $_SESSION["user_id"] = $user['id'];
 //var_dump($user['password']);
 //die("sjdkdsj");
 
-header( "Location: ../index.php");
+header( "Location: ../feed.php");
 
