@@ -88,3 +88,20 @@ function connection()
         $connect->close();
         return  $result->fetch_all(MYSQLI_ASSOC);
     }
+
+    function createComment(string $comment, int $postId, int $userId) : void
+    {
+        $connect = connection();
+
+        $comment = $connect->real_escape_string($comment);
+        $postId = $connect->real_escape_string($postId);
+
+        if( !$post = $connect->query("SELECT id FROM posts"))
+        {
+            die("Post Id doesnt exist in posts");
+        }
+
+        $connect->query("INSERT INTO comments (comment, user_id, post_id) VALUES ('$comment', $userId, $postId)");
+
+        $connect->close();
+    }
