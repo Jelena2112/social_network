@@ -76,7 +76,7 @@ function connection()
         $connect->close();
     }
 
-    function getAllPosts () :array
+    function getAllPosts () : array
     {
         $connect = connection();
         $result = $connect->query("SELECT posts.*, users.name FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY posts.id DESC");
@@ -96,7 +96,7 @@ function connection()
         $comment = $connect->real_escape_string($comment);
         $postId = $connect->real_escape_string($postId);
 
-        if( !$post = $connect->query("SELECT id FROM posts"))
+        if( !$connect->query("SELECT id FROM posts"))
         {
             die("Post Id doesnt exist in posts");
         }
@@ -104,4 +104,12 @@ function connection()
         $connect->query("INSERT INTO comments (comment, user_id, post_id) VALUES ('$comment', $userId, $postId)");
 
         $connect->close();
+    }
+
+    function getAllComments() : array
+    {
+        $connect = connection();
+        $result =$connect->query("SELECT * FROM comments ORDER BY id DESC ");
+        $connect->close();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }

@@ -21,4 +21,6 @@ require "base.php";
 
 createComment($comment, $postId, $userId);
 
+
+
 header("Location: ../feed.php");
