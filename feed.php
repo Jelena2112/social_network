@@ -47,6 +47,7 @@ $userId = $_SESSION["user_id"];
                 <input type="hidden" name="post_id" value="<?= $posts['id'] ?>">
                 <button>Submit</button>
             </form>
+            <a href="app/like.php?id=<?=$posts["id"] ?>">Like</a>
         <?php endforeach; ?>
 
         </body>
