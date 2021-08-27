@@ -32,5 +32,5 @@ $userId = $_SESSION["user_id"];
 
 createPost($postName, $postText, $userId);
 
-header("Location: ../index.php");
+header("Location: ../feed.php");
 

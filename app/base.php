@@ -114,10 +114,10 @@ function connection()
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    function createLike(int $like, int $postId, int $userId) : void
+    function createLike( int $postId, int $userId) : void
     {
         $connect = connection();
 
-        $connect->query("INSERT INTO likes (likes, post_id,user_id ) VALUES ($like, $postId, $userId)");
+        $connect->query("INSERT INTO likes (post_id,user_id ) VALUES ( $postId, $userId)");
         $connect->close();
     }
