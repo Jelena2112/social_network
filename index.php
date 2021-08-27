@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$user = $_SESSION["name"];
+
 ?>
 
 
@@ -19,8 +19,10 @@ $user = $_SESSION["name"];
 
 
         <?php if(isset($_SESSION["logged_in"])): ?>
+            <?php $user = $_SESSION["name"]; ?>
             <a href="add_new_post.php">Add new post</a>
             <h2>Welcome <?= $user ?></h2>
+            <a href="app/sign_out.php" />Sign out</a>
         <?php endif; ?>
 
     </body>

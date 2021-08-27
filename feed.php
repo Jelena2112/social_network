@@ -27,6 +27,7 @@ $userId = $_SESSION["user_id"];
         <body>
 
             <h2>Welcome <?= $user ?></h2>
+            <a href="app/sign_out.php" />Sign out</a>
 
             <?php foreach ($post as $posts): ?>
                 <p><?= $posts["post_name"] ?></p>
