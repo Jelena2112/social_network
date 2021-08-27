@@ -41,6 +41,8 @@ $result = createUser($name, $phone, $city, $country, $about_me, $age, $email, $p
 session_start();
 $_SESSION["logged_in"] = true;
 $_SESSION["user_id"] = $result;
+$_SESSION["name"] = $_POST['name'];
+//var_dump($_SESSION);
 
 //var_dump($_SESSION["user_id"]);
 

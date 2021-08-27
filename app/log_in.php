@@ -43,10 +43,10 @@ if( !password_verify($password, $user['password']) )
  session_start();
 $_SESSION["logged_in"] = true;
 $_SESSION["user_id"] = $user['id'];
-
+$_SESSION["name"] = $user["name"];
 //var_dump($_SESSION);
 
-//var_dump($user['password']);
+//var_dump($user);
 //die("sjdkdsj");
 
 header( "Location: ../feed.php");
